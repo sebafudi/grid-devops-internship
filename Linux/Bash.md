@@ -250,3 +250,208 @@ while read -r CPU MEMORY DISK; do
 done <"$FILE"
 ```
 
+## Traps and Signals
+```bash
+clear
+
+trap 'echo " - Pleasre Press Q to Exit..."' SIGINT SIGTERM SIGTSTP # ctrl c or kill or ctrl z
+
+while [ "$CHOICE" != "Q" ] && [ "$CHOICE" != "q" ]; do
+	echo "MAIN MENU"
+	echo "1) one"
+	echo "2) two"
+	echo "Q) Quit"
+	echo ""
+	read CHOICE
+
+	clear
+	read CHOICE
+done
+```
+
+## debugging
+`bash -x script.sh`
+
+you can also do `set -x` at some point in the script and `set +x` after the part you want to debug, to debug only a part of the script
+
+`set -f` disable globbing
+
+## error handling
+check `$?` if the last command succeeded 
+```bash
+if [ "$? = "0" ]; then
+	echo "success"
+	echo "`ls -la`"
+else
+	echo "failure to change the dir"
+	exit 1
+fi
+```
+
+## functions
+function cannot be empty
+or only comment
+```bash
+funcName () {
+	: # colon is short for null
+}
+```
+
+```bash
+funcExample () {
+	echo "example"
+}
+
+funcExample () { echo "example"; }
+
+funcExample
+```
+
+## basic structure
+1. global variables
+`CMDLINE=$1`
+
+2. function definition
+`funcExample () { echo "This is an example"; }`
+
+## variable scope
+```bash
+# global variable
+GLOBALVAR="Globally visible"
+
+funcExample () {
+	# local variable
+	LOCALVAR="Locally visible"
+	
+	echo "From withing the function $LOCALVAR"
+}
+
+clear
+
+echo "First"
+echo "GLOBAL variable = $GLOBALVAR" # visible
+echo "LOCALVAR = $LOCALVAR" # empty
+
+funcExample
+
+echo "Function called..."
+echo "GLOBAL variable = $GLOBALVAR" # visible
+echo "LOCALVAR = $LOCALVAR" # visible
+```
+
+## functions with parameters
+you can't access the cmdline arguments from within the function, unless you pass it or set to a global var
+```bash
+USERNAME=$1
+
+funcAgeInDays () {
+	echo "Hello $USERNAME, You are $1 Years Old."
+	echo "That makes you approximately `expr $1 \* 365` days old"
+}
+
+clear
+
+echo "Enter Your Age: "
+read USERAGE
+
+funcAgeInDays $USERAGE
+```
+
+## nested functions
+```bash
+GENDER=$1
+
+funcHuman () {
+	ARMS=2
+	LEGS=2
+	echo "This human has $ARMS arms and $LEGS legs"
+	funcMale () {
+		BEARD=1
+		echo "This man has $ARMS arms and $LEGS legs, with $BEARD beard(s)"
+	}
+	
+	funcFemale () {
+		BEARD=0
+		echo "This woman has $ARMS arms and $LEGS legs, with $BEARD beard(s)"
+	}
+}
+
+clear
+if [ "$GENDER" == "male" ]; then
+	funcHuman
+	funcMale
+else
+	funcHuman
+	funcFemale
+fi
+```
+
+## function return and exit
+
+```bash
+if [ ! -z $VARIABLE ]; then # if is defined
+	echo "\$VARIABLE is defined to $VARIABLE"
+fi
+```
+
+function can `return` a value, then check it with `$?`
+`exit 1` will stop the script with the code 1
+
+## infobox
+`ncurses` is needed
+```bash
+INFOBOX=${INFOBOX=dialog}
+TITLE="Default"
+MESSAGE="Something to say"
+XCOORD=10
+YCOORD=20
+
+funcDisplayInfoBox () {
+	$INFOBOX --title "$1" --infobox "$2" "$3" "$4"
+	sleep "$5"
+}
+
+if [ "$1" == "shutdown" ]; then
+	funcDisplayInfoBox "WARNING!" "We are SHUTTING DOWN the System..." "11" "21" "5"
+	echo "Shutting down!"
+else
+	funcDisplayInfoBox "Information..." "else" "11" "21" "5"
+	echo "else"
+fi
+```
+
+## messagebox
+```bash
+MSGBOX=${MSGBOX=dialog}
+TITLE="Default"
+MESSAGE="Some Message"
+XCOORD=10
+YCOORD=20
+
+funcDisplayMsgBox () {
+	$MSGBOX --title "$1" --msgbox "$2" "$3" "$4"
+}
+
+funcDisplayMsgBox "WARNING!" "Please press OK to shutdown the system" "10" "20"
+echo "Shutting Down Now!"
+```
+
+## more advanced dialog box
+```bash
+MENUBOX=${MENUBOX=dialog}
+
+funcDisplayDialogMenu () {
+	$MENUBOX --title "[ M A I N  M E N U ]" --menu "User UP/DOWN Arrows to Move and Select or the Number of Your choice and Enter" 15 45 4 1 "Display Hello World" 2 "Display Goodbye World" 3 "Display Nothing" X "Exit" 2>choice.txt
+}
+
+funcDisplayDialogMenu
+
+case "`cat choice.txt`" in
+	1) echo "Hello world";;
+	2) echo "Goodbye World";;
+	3) echo "Nothing";;
+	X) ;;
+esac
+rm choice.txt
+```
+
