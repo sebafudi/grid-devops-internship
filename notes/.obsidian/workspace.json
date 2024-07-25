@@ -20,18 +20,6 @@
             }
           },
           {
-            "id": "43cb3161dc0b4943",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Code Versioning/Git.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "17e8bcb91399afd1",
             "type": "leaf",
             "state": {
@@ -44,7 +32,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -174,6 +162,17 @@
   },
   "active": "17e8bcb91399afd1",
   "lastOpenFiles": [
+    "notes/Code Versioning/attachments/Screenshot 2024-06-28 at 22.08.39.png",
+    "notes/Code Versioning/attachments/Screenshot 2024-06-28 at 22.06.34.png",
+    "notes/Code Versioning/attachments/Screenshot 2024-06-28 at 22.02.57.png",
+    "notes/Code Versioning/attachments/Screenshot 2024-06-28 at 22.05.53.png",
+    "notes/Code Versioning/attachments/Screenshot 2024-06-28 at 22.02.32.png",
+    "notes/Code Versioning/attachments/Screenshot 2024-06-28 at 15.16.49.png",
+    "notes/Code Versioning/attachments/Screenshot 2024-06-27 at 16.03.55.png",
+    "notes/Code Versioning/attachments",
+    "notes/Code Versioning/Git.md",
+    "notes/Code Versioning",
+    "notes",
     "choice.txt",
     "Code Versioning/Git.md",
     "Linux/Bash.md",
@@ -182,22 +181,14 @@
     "Code Versioning/attachments/Screenshot 2024-06-28 at 22.06.34.png",
     "Code Versioning/attachments/Screenshot 2024-06-28 at 22.05.53.png",
     "Code Versioning/attachments/Screenshot 2024-06-28 at 22.02.57.png",
-    "Code Versioning/attachments/Screenshot 2024-06-28 at 22.02.32.png",
-    "Code Versioning/attachments/Screenshot 2024-06-28 at 15.16.49.png",
-    "Code Versioning/attachments/Screenshot 2024-06-27 at 16.03.55.png",
     "Code Versioning/attachments",
     "Network/Network.md",
     "Git",
     "Code Versioning",
-    "Network/attachments/Pasted image 20240619143418.png",
-    "Network/attachments/Pasted image 20240619143252.png",
-    "Network/attachments/Screenshot 2024-06-19 at 14.30.40.png",
     "Network/attachments",
     "DevOps/DevOps.md",
     "DevOps",
     "Network",
-    "Linux",
-    "Linux/attachments",
     "Welcome.md"
   ]
 }
