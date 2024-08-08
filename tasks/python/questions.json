@@ -1,0 +1,23 @@
+{
+    "Customer Satisfaction Survey": {
+        "General Information": {
+            "How satisfied are you with our product?": {
+                "Description": "Please rate your satisfaction level.",
+                "Answers": [
+                    "Very Satisfied",
+                    "Satisfied",
+                    "Neutral",
+                    "Dissatisfied",
+                    "Very Dissatisfied"
+                ]
+            },
+            "Would you recommend our product to others?": {
+                "Description": "Please indicate whether you would recommend our product.",
+                "Answers": [
+                    "Yes",
+                    "No"
+                ]
+            }
+        }
+    }
+}
